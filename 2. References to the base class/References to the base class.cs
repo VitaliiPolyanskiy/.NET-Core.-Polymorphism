@@ -5,20 +5,20 @@ using System;
 
 class X
 {
-    public int a;
+    public int MyPropertyX { get; set; }
     public X(int i)
     {
-        a = i;
+        MyPropertyX = i;
     }
 }
 
 class Y : X
 {
-    public int b;
+    public int MyPropertyY { get; set; }
     public Y(int i, int j)
         : base(j)
     {
-        b = i;
+        MyPropertyY = i;
     }
 }
 
@@ -30,11 +30,11 @@ class BaseRef
         X x2;
         Y у = new Y(5, 6);
         x2 = x; // OK, обе переменные имеют одинаковый тип.
-        Console.WriteLine("x2.a: " + x2.a);
+        Console.WriteLine("x2.MyPropertyX: " + x2.MyPropertyX);
         x2 = у; // Все равно ok, поскольку класс Y  выведен из класса X.
-        Console.WriteLine("х2.а: " + x2.a);
+        Console.WriteLine("х2.MyPropertyX: " + x2.MyPropertyX);
         // Х-ссылки "знают" только о членах класса X.
-        x2.a = 19; // ОК
-        // x2.b = 27; // Ошибка, в классе X нет члена b.
+        x2.MyPropertyX = 19; // ОК
+        // x2.MyPropertyY = 27; // Ошибка, в классе X нет члена MyPropertyY.
     }
 }
